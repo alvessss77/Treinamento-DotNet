@@ -1,71 +1,37 @@
 Ativando o WSL no Windows
 
-Passo 1 - 
+Aperte Windows+R, e escreva "Powershell".
 
-
-Pular para o conteúdo
-Você disse:
-Como ativar o WSL no windows. 
-O ChatGPT disse:
-Para ativar o WSL (Windows Subsystem for Linux) no Windows, siga os passos abaixo. Esses passos funcionam para o Windows 10 (versão 2004 ou superior) e Windows 11:
-
-✅ Passo a passo para ativar o WSL
-1. Abra o PowerShell como Administrador
-Clique com o botão direito no menu Iniciar > Windows PowerShell (Admin) ou Terminal do Windows (Admin).
-
-2. Execute o comando para instalar o WSL
-Digite o comando abaixo:
-
-wsl --install
-Esse comando:
-
-Ativa os componentes necessários (como o WSL e a Máquina Virtual).
-
-Instala a distribuição padrão do Linux (normalmente Ubuntu).
-
-Reinicia o sistema automaticamente, se necessário.
-
-🧰 Caso o comando wsl --install não funcione:
-Você pode ativar manualmente os recursos:
-
-1. Ative o WSL e a Plataforma de Máquina Virtual
-No PowerShell (como Admin), execute:
-
+copie e cole "wsl --install". Caso apareca "Nao ha suporte para o WSL2 com a configuracao atual do computador".
+Esse comando fara com que instale 
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-2. Reinicie o computador
-3. Instale a distribuição do Linux
-Acesse a Microsoft Store, pesquise por “Ubuntu” ou outra distribuição e clique em Instalar.
-
-🧪 Verificar se está funcionando
-Depois da instalação:
-
-Abra o terminal (PowerShell, Prompt ou Terminal do Windows).
-
-Digite:
-
-wsl
-Se tudo estiver certo, ele abrirá o terminal da sua distro Linux.
-
-❗Requisitos
-Windows 10 versão 2004 ou superior, com build 19041 ou superior.
-
-Virtualização habilitada na BIOS.
-
-Se quiser ajuda para instalar uma distribuição específica ou configurar o WSL 2, posso te orientar também.
+dism.exe /online /enable-feature /featurename:HypervisorPlatform /all /norestart
+dism.exe /online /enable-feature /featurename:Microsoft-Hyper-V-All /all /norestart
+Apos inserir o comando, reinicie a maquina e volte para o powershell, e cole esse codigo "wsl --install -d Ubuntu".
+Se nao funcionar de nenhuma das formas instale o ubuntu manualmente direto da Microsoft Store, pesquise por "Ubuntu", clique em "Ubuntu 22.04 LTS (ou algum similar).
+Apos a instalacao crie um usuario e senha.
+Caso nenhuma dessas formas funcionar verifique se a virtualizacao da BIOS esta ativada, baixe e instale o pacote de atualização do kernel do WSL 2, use o wsl --set-default-version 1 como alternativa temporária.
+Reinicie seu PC e entre na BIOS.
+Geralmente, durante a inicialização, pressione a tecla Del, F2, F10 ou Esc (depende do fabricante)
+Procure uma opção chamada “Intel VT-x”, “Intel Virtualization Technology”, “SVM Mode” (para AMD) ou algo parecido
+Certifique-se que está Ativada (Enabled)
+Salve e saia da BIOS (geralmente F10).
+Se seu Windows não instalou automaticamente o kernel, faça isso manualmente:
+Baixe o instalador oficial aqui (da Microsoft):
+Atualização do kernel do WSL 2
+Rode o arquivo .msi e siga o passo a passo para instalar
+Reinicie o PC.
+No Powershell coloque o codigo "wsl --set-default-version 1".
+Abra o Ubuntu e veja se esta funcionando
 
 
 
 
 
-Anexar
 
-Buscar
 
-Refletir
 
-Voz
-Nenhum arquivo escolhidoNenhum arquivo escolhido
-O ChatGPT pode cometer erros. Considere verificar informações importantes.
+
 
 
